@@ -26,7 +26,7 @@ public class NBody{
         return planets;
     }
 
-    public static String imageToDraw = "./images/starfield.jpg";
+    private static String imageToDraw = "./images/starfield.jpg";
     public static void main(String[] args) {
     	double T = Double.parseDouble(args[0]);
         double dt = Double.parseDouble(args[1]);
