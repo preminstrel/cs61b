@@ -36,62 +36,75 @@ public class IntList {
     /**
      * Returns a list equal to L with all elements squared. Destructive.
      */
-    public static void dSquareList(IntList L) {
-
-        while (L != null) {
-            L.first = L.first * L.first;
-            L = L.rest;
+    public static void dSquareList(IntList L){
+        IntList p=L;
+        while(p!=null){
+            p.first=p.first*p.first;
+            p=p.rest;
         }
     }
 
     /**
-     * Returns a list equal to L with all elements squared. Non-destructive.
+     @return a version of the list with all elements squared, using iteration.
+     The list is not modified.
      */
-    public static IntList squareListIterative(IntList L) {
-        if (L == null) {
-            return null;
+    public static IntList squareListIterative(IntList L){
+        IntList Q=new IntList(L.first*L.first,null);
+        IntList p=L.rest;
+        IntList q=Q;
+        while(p!=null){
+            q.rest=new IntList(p.first*p.first,null);
+            p=p.rest;
+            q=q.rest;
         }
-        IntList res = new IntList(L.first * L.first, null);
-        IntList ptr = res;
-        L = L.rest;
-        while (L != null) {
-            ptr.rest = new IntList(L.first * L.first, null);
-            L = L.rest;
-            ptr = ptr.rest;
-        }
-        return res;
+        return Q;
     }
 
+
     /**
-     * Returns a list equal to L with all elements squared. Non-destructive.
+     @return returns a version of the list with all elements squared, using recursion.
+     The list is not modified.
      */
-    public static IntList squareListRecursive(IntList L) {
-        if (L == null) {
-            return null;
+    public static IntList squareListRecursive(IntList L){
+        while(L!=null) {
+            return new IntList(L.first*L.first,squareListRecursive(L.rest));
         }
-        return new IntList(L.first * L.first, squareListRecursive(L.rest));
+        return null;
     }
 
-    /** DO NOT MODIFY ANYTHING ABOVE THIS LINE! */
-
-
     /**
-     * Returns a list consisting of the elements of A followed by the
+     * @return Returns a list consisting of the elements of A followed by the
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
 
     public static IntList dcatenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList p=A;
+        while(p.rest!=null){
+            p=p.rest;
+        }
+        p.rest=B;
+        return A;
     }
 
     /**
-     * Returns a list consisting of the elements of A followed by the
+     * @return Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
     public static IntList catenate(IntList A, IntList B) {
-        //TODO:  fill in method
-        return null;
+        IntList Q = new IntList(A.first,null);
+        IntList p=A.rest;
+        IntList q=Q;
+        while(p!=null){
+            q.rest=new IntList(p.first,null);
+            p=p.rest;
+            q=q.rest;
+        }
+        IntList p2=Q;
+        while(p2.rest!=null){
+            p2=p2.rest;
+        }
+        p2.rest=B;
+        return Q;
     }
 
 
