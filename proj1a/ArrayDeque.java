@@ -1,11 +1,12 @@
+/** Performs some basic linked list tests. */
 public class ArrayDeque<T> {
-	private T[] items;
+    private T[] items;
 	private int size;
 	public T removeFirst() {
         T x = items[0];
         T[] a = (T[]) new Object[size - 1];
-         System.arraycopy(items, 1, a, 0, size - 1);
-         items = a;
+        System.arraycopy(items, 1, a, 0, size - 1);
+        items = a;
         return x;   
     }
     public boolean isEmpty() {
@@ -35,7 +36,7 @@ public class ArrayDeque<T> {
 		size += 1;
 	}
 	/* -------- Function: Get Last -------------*/
-	public T getLast() {
+	private T getLast() {
         return items[size - 1];
     }
     /* -------- Function: Get ith element --------*/
@@ -60,5 +61,11 @@ public class ArrayDeque<T> {
         System.arraycopy(items, 0, a, 1, size);
         a[0] = x;
         items = a;
+    }
+    public void printDeque() {
+        for (int i = 0; i < size, i++) {
+            System.out.print(items[i]);
+            System.out.print(" ");
+        }
     }
 }

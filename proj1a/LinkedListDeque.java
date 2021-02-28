@@ -3,7 +3,7 @@
 */
 public class LinkedListDeque<T> {
 	/* the private static class IntNode */
-	private class Node {
+    private class Node {
 		private T item;		
 		private Node prev;
 		private Node next;
@@ -87,7 +87,7 @@ public class LinkedListDeque<T> {
 		}
 		Node temp = sentF.next;
 		sentF.next = temp.next;
-		temp.next.prev = sentF;
+		temp.next.prev = temp.prev;
 		return temp.item; 
 	}
 
@@ -98,7 +98,7 @@ public class LinkedListDeque<T> {
 		}
 		Node temp = sentB.prev;
 		sentB.prev = temp.prev;
-		temp.prev.next = sentB;
+		temp.prev.next = temp.next;
 		return temp.item;
 	}
 
