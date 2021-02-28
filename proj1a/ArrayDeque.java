@@ -1,7 +1,21 @@
 public class ArrayDeque<T> {
 	private T[] items;
 	private int size;
-	/* Creates a empty ArrayDeque */
+	public T removeFirst() {
+        T x = items[0];
+        T[] a = (T[]) new Object[size - 1];
+         System.arraycopy(items, 1, a, 0, size - 1);
+         items = a;
+        return x;   
+    }
+    public boolean isEmpty() {
+        if (size == 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /* Creates a empty ArrayDeque */
 	public ArrayDeque() {
 		items = (T[]) new Object[8];
 		size = 0;
@@ -15,7 +29,7 @@ public class ArrayDeque<T> {
     /* -------- Function: Add Last ------------*/
 	public void addLast(T x) {
 		if (size == items.length) {
-			resize(size*2);
+			resize(size * 2);
 		}
 		items[size] = x;
 		size += 1;

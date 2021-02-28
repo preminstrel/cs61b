@@ -1,16 +1,15 @@
-/**
-	@author Hanshi Sun
-	@create 2021-2-28
+/**@author Hanshi Sun
+*  @create 2021-2-28
 */
 public class LinkedListDeque<T> {
 	/* the private static class IntNode */
 	private class Node {
-		public T item;		
-		public Node prev;
-		public Node next;
+		private T item;		
+		private Node prev;
+		private Node next;
 
 		/* constructor */
-		public Node ( T i, Node p, Node n) {
+		public Node(T i, Node p, Node n) {
 			item = i;
 			prev = p;
 			next = n;
@@ -33,13 +32,13 @@ public class LinkedListDeque<T> {
 	}
 
 	/* Creates an LinkedListDequeList by item */
-	public LinkedListDeque(T item) {
+/*	public LinkedListDeque(T item) {
 		sentF = new Node(null, null, null);
 		sentB = new Node(null, null, null);
-		sentF.next = new Node( item, sentF, sentB);
+		sentF.next = new Node(item, sentF, sentB);
 		sentB.prev = sentF.next;
 		size = 1;
-	}
+	}*/
 
 	//Adds an item of type T to the front of the deque.
 	public void addFirst(T item) {
@@ -67,7 +66,7 @@ public class LinkedListDeque<T> {
 	}
 
 //Returns the number of items in the deque.
-	public int size(){
+	public int size() {
 		return size;
 	}
 
@@ -77,7 +76,7 @@ public class LinkedListDeque<T> {
 		while (p.next != sentB) {
 			System.out.print(p.next.item);
 			System.out.print(" ");
-			p.next=p.next.next;
+			p.next = p.next.next;
 		}
 	}
 
@@ -98,7 +97,7 @@ public class LinkedListDeque<T> {
 			return null;
 		}
 		Node temp = sentB.prev;
-		sentF.prev = temp.prev;
+		sentB.prev = temp.prev;
 		temp.prev.next = sentB;
 		return temp.item;
 	}
@@ -118,7 +117,7 @@ public class LinkedListDeque<T> {
         return p.item;
 	} 
 
-	public T getfirst() {
+	private T getfirst() {
 		if (isEmpty()) {
 			return null;
 		}
@@ -139,7 +138,6 @@ public class LinkedListDeque<T> {
 
 		}
 		sentF = sentF.next;
-		return getRecursive(index-1);
+		return getRecursive(index - 1);
 	}
-
 }
