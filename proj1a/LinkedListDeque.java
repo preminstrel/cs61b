@@ -2,7 +2,7 @@
 *  @create 2021-2-28
 */
 public class LinkedListDeque<T> {
-	/* the private static class IntNode */
+/* the private static class IntNode */
     private class Node {
 		private T item;		
 		private Node prev;
