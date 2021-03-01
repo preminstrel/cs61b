@@ -95,16 +95,27 @@ public class LinkedListDeque<T> {
         return temp.item;
     }
 
-    //Removes and returns the item at the back of the deque. If no such item exists, returns null.
+    /*    //Removes and returns the item at the back of the deque. If no such item exists, returns null.
+        public T removeLast() {
+            if (size == 0) {
+                return null;
+            }
+            Node temp = sentB.prev;
+            sentB.prev = temp.prev;
+            temp.prev.next = temp.next;
+            size -= 1;
+            return temp.item;
+        }*/
     public T removeLast() {
         if (size == 0) {
             return null;
         }
-        Node temp = sentB.prev;
-        sentB.prev = temp.prev;
-        temp.prev.next = temp.next;
-        size -= 1;
-        return temp.item;
+        Node lastRemove = sentB.prev;
+        Node sbpp = sentB.prev.prev;
+        sbpp.next = sentB;
+        sentB.prev = sbpp;
+        size = size - 1;
+        return lastRemove.item;
     }
 
     //Gets the item at the given index, where 0 is the front, 1 is the next item, and so forth.
