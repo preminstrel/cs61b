@@ -6,11 +6,14 @@ public class ArrayDeque<T> {
     private int size = 0;
 
     public T removeFirst() {
+        if (size == 0) {
+            return null;
+        }
         T x = items[0];
         size = size - 1;
         int len = items.length;
         if ((size <= (items.length * 0.25)) && (items.length >= 16)) {
-            len = size * 2;
+            len = size * 10;
         }
         resize(len, 1, 0);
         return x;
@@ -42,7 +45,7 @@ public class ArrayDeque<T> {
     /* -------- Function: Add Last ------------*/
     public void addLast(T x) {
         if (size == items.length) {
-            resize(size * 2, 0, 0);
+            resize(size * 10, 0, 0);
         }
         items[size] = x;
         size += 1;
@@ -72,11 +75,14 @@ public class ArrayDeque<T> {
      * Deletes item from back of the list and returns deleted item.
      */
     public T removeLast() {
+        if (size == 0) {
+            return null;
+        }
         T x = getLast();
         items[size - 1] = null;
         size = size - 1;
         if ((size <= (items.length * 0.25)) && (items.length >= 16)) {
-            resize(size * 2, 0, 0);
+            resize(size * 10, 0, 0);
         }
         return x;
     }
@@ -85,7 +91,7 @@ public class ArrayDeque<T> {
     public void addFirst(T x) {
         int len = items.length;
         if (size == items.length) {
-            len = size * 2;
+            len = size * 10;
         }
         resize(len, 0, 1);
         items[0] = x;
