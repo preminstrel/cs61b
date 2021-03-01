@@ -15,13 +15,19 @@ public class LinkedListDeque<T> {
             prev = p;
             next = n;
         }
+        private T getRecursive(int index){
+			if(index == 0){
+				return this.item;
+			}
+			return next.getRecursive(index -1);
+		}
     }
 
     /* add two sentinel */
-    private Node sentF = new Node(null, null, null);
-    private Node sentB = new Node(null, null, null);
+    private Node sentF;
+    private Node sentB;
     private int size;
-    private Node setfront = sentF;
+    //private Node setfront = sentF;
 
     /**
      * Creates an empty LinkedListDequeList.
@@ -53,8 +59,8 @@ public class LinkedListDeque<T> {
     //Adds an item of type T to the back of the deque.
     public void addLast(T item) {
         Node temp = new Node(item, sentB.prev, sentB);
-        sentB.prev = temp;
         sentB.prev.next = temp;
+        sentB.prev = temp;
         size += 1;
     }
 
@@ -135,7 +141,7 @@ public class LinkedListDeque<T> {
         return sentF.next.item;
     }
 
-    // Use Recursion
+    // Use Recursion  ---- !!!! very clever way !!!! ---------
     public T getRecursive(int index) {
         if ((index + 1) > size) {
             return null;
@@ -143,12 +149,6 @@ public class LinkedListDeque<T> {
         if (isEmpty()) {
             return null;
         }
-        if (index == 0) {
-            sentF = setfront;
-            return getfirst();
-
-        }
-        sentF = sentF.next;
-        return getRecursive(index - 1);
+        return sentF.next.getRecursive(index);
     }
 }
