@@ -21,7 +21,7 @@ public class Palindrome {
         return true;
     }
 
-    public boolean isPalindromeHelper(Deque<Character> deque, CharacterComparator cc) {
+    private boolean isPalindromeHelper(Deque<Character> deque, CharacterComparator cc) {
         if (deque.size() == 0 || deque.size() == 1) {
             return true;
         } else {
