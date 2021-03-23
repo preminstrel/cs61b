@@ -55,8 +55,8 @@ public class LinkedListDeque<T> {
     //Adds an item of type T to the front of the deque.
     public void addFirst(T item) {
         Node temp = new Node(item, sentF, sentF.next);
-        sentF.next = temp;
         sentF.next.prev = temp;
+        sentF.next = temp;
         size += 1;
     }
 
